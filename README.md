@@ -69,4 +69,6 @@ Before deploying:
 
 ## Copyright
 
-This repository is proprietary. See [LICENSE](LICENSE) for usage restrictions.
+Except where otherwise noted, this repository is licensed under the Creative
+Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+See [LICENSE](LICENSE) for the terms and applicable exceptions.
