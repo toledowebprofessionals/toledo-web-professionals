@@ -1,0 +1,23 @@
+---
+const destination = '/sponsor-a-talk/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${destination}`} />
+    <link rel="canonical" href={new URL(destination, Astro.site)} />
+    <title>Sponsor a Talk | Toledo Web Professionals</title>
+    <script is:inline define:vars={{ destination }}>
+      window.location.replace(destination);
+    </script>
+  </head>
+  <body>
+    <p>
+      This page has moved to <a href={destination}>Sponsor a Talk</a>.
+    </p>
+  </body>
+</html>

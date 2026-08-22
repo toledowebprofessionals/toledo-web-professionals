@@ -1,0 +1,63 @@
+---
+import {
+  faFacebookF,
+  faGithub,
+  faInstagram,
+  faLinkedinIn,
+  faMeetup,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faBuilding,
+  faHandshake,
+  faHeart,
+  faLightbulb,
+} from "@fortawesome/free-regular-svg-icons";
+import {
+  faArrowUpRightFromSquare,
+  faCheck,
+  faCircleCheck,
+  faEnvelope,
+  faLink,
+} from "@fortawesome/free-solid-svg-icons";
+
+const icons = {
+  building: faBuilding,
+  check: faCheck,
+  "circle-check": faCircleCheck,
+  envelope: faEnvelope,
+  "external-link": faArrowUpRightFromSquare,
+  facebook: faFacebookF,
+  github: faGithub,
+  handshake: faHandshake,
+  heart: faHeart,
+  instagram: faInstagram,
+  lightbulb: faLightbulb,
+  link: faLink,
+  linkedin: faLinkedinIn,
+  meetup: faMeetup,
+} as const;
+
+export type IconName = keyof typeof icons;
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const icon = icons[name];
+const [width, height, , , pathData] = icon.icon;
+const paths = Array.isArray(pathData) ? pathData : [pathData];
+---
+
+<svg
+  class:list={["inline-block shrink-0", className]}
+  viewBox={`0 0 ${width} ${height}`}
+  width="1em"
+  height="1em"
+  fill="currentColor"
+  aria-hidden="true"
+  focusable="false"
+>
+  {paths.map((path) => <path d={path} />)}
+</svg>

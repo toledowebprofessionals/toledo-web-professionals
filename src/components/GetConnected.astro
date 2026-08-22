@@ -1,0 +1,79 @@
+---
+import Icon, { type IconName } from "./Icon.astro";
+
+const socials = [
+  [
+    "Meetup",
+    "https://www.meetup.com/Toledo-Web-Professionals/",
+    "meetup",
+  ],
+  [
+    "Facebook",
+    "https://www.facebook.com/toledowebprofessionals",
+    "facebook",
+  ],
+  [
+    "Instagram",
+    "https://www.instagram.com/toledowebprofessionals/",
+    "instagram",
+  ],
+  [
+    "GitHub",
+    "https://github.com/toledowebprofessionals/",
+    "github",
+  ],
+  ["Email", "mailto:shout@twpmeetup.com", "envelope"],
+] satisfies [string, string, IconName][];
+---
+
+<section
+  class="twp-gradient scroll-mt-20 py-20 text-center text-white"
+  id="contact"
+>
+  <div class="mx-auto max-w-4xl px-5">
+    <h2 class="mb-10 text-3xl font-normal">
+      Get connected with Toledo’s web community.
+    </h2>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        class="inline-flex min-h-16 items-center justify-center gap-1.5 bg-white px-8 py-2 text-lg font-bold text-twp-orange transition hover:bg-white/90"
+        href="https://www.meetup.com/Toledo-Web-Professionals/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <span class="leading-none">Join & RSVP on</span>
+        <Icon name="meetup" class="text-4xl leading-none" />
+      </a>
+      <a
+        class="inline-flex min-h-16 items-center justify-center border-2 border-white px-8 py-2 text-lg font-bold text-white transition hover:bg-white hover:text-twp-orange"
+        href="/sponsor-a-talk/"
+      >
+        Sponsor a Talk
+      </a>
+    </div>
+    <ul
+      class="mt-6 flex flex-wrap justify-center gap-3"
+      aria-label="Social links"
+    >
+      {
+        socials.map(([label, href, icon]) => (
+          <li>
+            <a
+              class="grid size-12 place-items-center text-3xl text-white transition hover:scale-110 hover:text-white/80"
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel="noreferrer"
+              aria-label={label}
+            >
+              <Icon
+                name={icon}
+                class={icon === "meetup" ? "text-4xl" : undefined}
+              />
+              <span class="sr-only">{label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

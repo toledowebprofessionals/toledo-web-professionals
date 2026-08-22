@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import twpLogo from "../assets/img/logos/twp-logo.svg";
+import Icon from "./Icon.astro";
+---
+
+<footer class="border-t border-zinc-200 bg-white py-6">
+  <nav
+    class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm md:flex-row"
+    aria-label="Footer"
+  >
+    <a href="/">
+      <Image
+        class="w-20"
+        src={twpLogo}
+        alt="Toledo Web Professionals"
+      />
+    </a>
+    <div class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+      <a class="text-twp-orange hover:text-orange-700" href="/about/">About</a>
+      <a class="text-twp-orange hover:text-orange-700" href="/speakers/">
+        Speakers
+      </a>
+      <a class="text-twp-orange hover:text-orange-700" href="/community/">
+        Community
+      </a>
+      <a
+        class="inline-flex whitespace-nowrap items-center gap-2 text-twp-orange hover:text-orange-700"
+        href="https://www.meetup.com/Toledo-Web-Professionals/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        See Events
+        <Icon name="external-link" class="size-3 text-xs" />
+      </a>
+      <a
+        class="font-semibold text-twp-orange hover:text-orange-700"
+        href="/sponsor-a-talk/"
+      >
+        Sponsor a Talk
+      </a>
+    </div>
+  </nav>
+</footer>

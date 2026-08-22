@@ -1,0 +1,13 @@
+---
+import { getYearsOfService, numberToWords } from "../utils/yearsOfService";
+
+interface Props {
+  format?: "number" | "words";
+}
+
+const { format = "words" } = Astro.props;
+const years = getYearsOfService();
+const value = format === "words" ? numberToWords(years) : years;
+---
+
+<span data-service-years data-format={format}>{value}</span>

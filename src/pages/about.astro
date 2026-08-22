@@ -1,0 +1,85 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import GetConnected from "../components/GetConnected.astro";
+import YearsOfService from "../components/YearsOfService.astro";
+import AboutContent from "../components/AboutContent.astro";
+import ServiceYears from "../components/ServiceYears.astro";
+import { getImage } from "astro:assets";
+import toledoFireworks from "../assets/img/backgrounds/toledo-fireworks.jpg";
+
+const fireworksBackground = await getImage({
+  src: toledoFireworks,
+  width: 1920,
+  format: "webp",
+  quality: "mid",
+});
+---
+
+<SiteLayout
+  title="About | Toledo Web Professionals"
+  description="Learn how Toledo Web Professionals connects local tech talent, businesses, speakers, and volunteers through free community events."
+>
+  <section
+    class="relative flex min-h-screen items-center bg-cover bg-center pt-20 text-white"
+    style={`background-image: url(${fireworksBackground.src})`}
+  >
+    <div class="absolute inset-0 bg-zinc-950/65" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-6xl px-5 py-16 lg:px-8">
+      <YearsOfService />
+    </div>
+  </section>
+
+  <AboutContent headingLevel="h1" />
+
+  <section class="bg-zinc-100 py-20 text-zinc-600 lg:py-28">
+    <div class="mx-auto max-w-4xl px-5 lg:px-8">
+      <h2 class="mb-8 text-3xl font-normal text-zinc-700 sm:text-4xl">
+        Our History
+      </h2>
+
+      <div class="space-y-6 leading-relaxed">
+        <p>
+          Founded in 2011 by Dan Paquette &amp; Greg Miller, Toledo Web
+          Professionals is a critical hub in Toledo’s learning and professional
+          community of UX/IA professionals, entrepreneurs, software developers,
+          programmers, and IT people. We meet and discuss a broad range of
+          topics including entrepreneurship, digital marketing, and designing
+          &amp; programming the next generation of websites, web applications,
+          and web-enabled businesses.
+        </p>
+
+        <p>
+          Toledo Web Professionals is the largest and longest-running technology
+          and professional networking organization. For over <ServiceYears />
+          years, we’ve held hundreds of events, from casual networking and
+          featured speakers to workshops and industry panels.
+        </p>
+
+        <p>
+          We aim to make our events a valuable learning experience to remember,
+          and we would love for you to be a part of it.
+        </p>
+
+        <h3 class="pt-5 text-2xl font-normal text-zinc-700">
+          What Makes Toledo Web Professionals Special
+        </h3>
+
+        <p>
+          We’re driven to build a community in Toledo that celebrates learning,
+          entrepreneurship, and technology, and these events are offered to our
+          members free of charge. We operate solely on the generosity of
+          individuals and organizations like you to provide the most inclusive,
+          diverse, and knowledge-rich environments to foster innovation.
+        </p>
+
+        <p>
+          Networking and technology learning events are the hallmark of major
+          tech ecosystems in cities all over the world, including Toledo, where
+          our grassroots efforts are always expanding.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <GetConnected />
+</SiteLayout>

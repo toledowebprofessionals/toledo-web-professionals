@@ -1,0 +1,106 @@
+---
+import GetConnected from "../components/GetConnected.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { Image } from "astro:assets";
+import Icon from "../components/Icon.astro";
+import gdgLogo from "../assets/img/community/gdg.png";
+import toledoCodesLogo from "../assets/img/community/toledo-codes.png";
+import wordpressToledoLogo from "../assets/img/community/wordpress-toledo.png";
+
+const communities = [
+  {
+    name: "GDG Toledo",
+    logo: gdgLogo,
+    logoClass: "max-h-28 max-w-60",
+    href: "https://gdg.community.dev/gdg-toledo/",
+    description:
+      "GDG Toledo is a local chapter of Google Developer Groups, a worldwide community of developers interested in Google’s developer technologies. The group hosts events and workshops and provides resources for developers in the Toledo area.",
+  },
+  {
+    name: "Toledo Codes",
+    logo: toledoCodesLogo,
+    logoClass: "max-h-24 max-w-72",
+    href: "https://www.toledocodes.com/",
+    description:
+      "Toledo Codes brings local developers and technology enthusiasts together to learn, build, and connect. Through community events and hands-on experiences, the group creates welcoming opportunities for people at every stage of their coding journey.",
+  },
+  {
+    name: "WordPress Toledo",
+    logo: wordpressToledoLogo,
+    logoClass: "max-h-36 max-w-36",
+    href: "https://wptoledo.com/",
+    description:
+      "WordPress Toledo is a local meetup group for WordPress users, developers, and enthusiasts. The group focuses on WordPress development, design, and best practices for the popular content management system.",
+  },
+];
+---
+
+<SiteLayout
+  title="Toledo Tech Community"
+  description="Meet the organizations helping Toledo’s technology community learn, connect, and grow."
+>
+  <section class="twp-gradient twp-grid-animated overflow-hidden pt-20 text-white">
+    <div
+      class="mx-auto flex min-h-[34rem] max-w-6xl items-center px-5 py-20 lg:px-8"
+    >
+      <div class="max-w-2xl">
+        <p class="mb-4 text-lg font-bold uppercase tracking-[0.15em]">
+          Better Together
+        </p>
+        <h1 class="text-4xl font-bold leading-[0.95] sm:text-5xl lg:text-6xl">
+          Toledo’s tech community is bigger than any one group.
+        </h1>
+        <p class="mt-7 max-w-xl text-xl font-bold leading-relaxed">
+          Toledo Web Professionals is proud to be one part of a broad,
+          collaborative community where people share knowledge, create
+          opportunities, and help local technology grow.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto max-w-6xl px-5 lg:px-8">
+      <div>
+        {
+          communities.map((community) => (
+            <article class="grid items-center gap-10 py-12 md:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+              <div class="flex h-56 items-center justify-center rounded-lg bg-zinc-50 p-8">
+                <Image
+                  class:list={["h-auto w-auto", community.logoClass]}
+                  src={community.logo}
+                  alt={`${community.name} logo`}
+                  widths={[160, 320]}
+                  sizes="(min-width: 768px) 20rem, 15rem"
+                  format="webp"
+                  quality="high"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div>
+                <h2 class="text-2xl font-bold text-twp-pink">
+                  {community.name}
+                </h2>
+                <p class="mt-4 leading-relaxed">{community.description}</p>
+                {community.href && (
+                  <a
+                    class="mt-5 inline-flex items-center gap-2 font-bold text-twp-orange hover:text-orange-700"
+                    href={community.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Visit {community.name}
+                    <Icon name="external-link" class="text-sm" />
+                  </a>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <GetConnected />
+</SiteLayout>

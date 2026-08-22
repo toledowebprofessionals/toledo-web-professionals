@@ -1,0 +1,95 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import allerLight from "../assets/fonts/aller/aller-light/aller-light.woff2?url";
+import allerRegular from "../assets/fonts/aller/aller-regular/aller-regular.woff2?url";
+import favicon from "../assets/img/meta/shortcut/shortcut-196x196.png";
+import openGraphImage from "../assets/img/meta/open-graph/twp-open-graph.png";
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+}
+const {
+  title = "Toledo Web Professionals",
+  description = "Free, open networking and professional development for Toledo-area web professionals.",
+  path = Astro.url.pathname,
+} = Astro.props;
+const canonical = new URL(path, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="preload"
+      href={allerLight}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={allerRegular}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href={favicon.src}
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:image"
+      content={new URL(openGraphImage.src, Astro.site)}
+    />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W5Q54QZL');
+    </script>
+    <!-- End Google Tag Manager -->
+    <ClientRouter />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white font-sans font-light text-zinc-600 antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W5Q54QZL"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a
+      class="sr-only z-50 bg-white p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3"
+      href="#main"
+    >
+      Skip to content
+    </a>
+    <SiteHeader transition:persist="site-header" />
+    <main id="main"><slot /></main>
+    <SiteFooter transition:persist="site-footer" />
+    <script src="../scripts/site.ts"></script>
+  </body>
+</html>

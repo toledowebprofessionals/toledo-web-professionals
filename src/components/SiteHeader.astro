@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import twpLogo from "../assets/img/logos/twp-logo.svg";
+import Icon from "./Icon.astro";
+---
+
+<header class="fixed inset-x-0 top-0 z-40 bg-white shadow-md">
+  <nav
+    class="mx-auto flex min-h-20 max-w-7xl items-center justify-between px-5 lg:px-8"
+    aria-label="Main navigation"
+  >
+    <a href="/" aria-label="Toledo Web Professionals home">
+      <Image class="w-24" src={twpLogo} alt="" />
+    </a>
+    <button
+      class="navbar-toggler rounded border border-zinc-300 p-2 text-zinc-700 lg:hidden"
+      type="button"
+      aria-controls="navbarList"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <svg
+        class="size-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        >
+        </path>
+      </svg>
+    </button>
+    <div
+      id="navbarList"
+      class="hidden items-center gap-1 max-lg:absolute max-lg:inset-x-0 max-lg:top-full max-lg:flex-col max-lg:bg-white max-lg:p-4 max-lg:shadow-lg lg:flex"
+    >
+      <a
+        class="px-4 py-2 font-semibold text-twp-orange hover:text-orange-700"
+        href="/about/"
+      >
+        About
+      </a>
+      <a
+        class="px-4 py-2 font-semibold text-twp-orange hover:text-orange-700"
+        href="/speakers/"
+      >
+        Speakers
+      </a>
+      <a
+        class="px-4 py-2 font-semibold text-twp-orange hover:text-orange-700"
+        href="/community/"
+      >
+        Community
+      </a>
+      <a
+        class="inline-flex whitespace-nowrap items-center gap-2 px-4 py-2 font-semibold text-twp-orange hover:text-orange-700"
+        href="https://www.meetup.com/Toledo-Web-Professionals/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        See Events
+        <Icon name="external-link" class="size-3 text-xs" />
+      </a>
+      <a
+        class="ml-3 border-2 border-twp-orange px-4 py-2 font-semibold text-twp-orange transition hover:bg-twp-orange hover:text-white max-lg:ml-0"
+        href="/sponsor-a-talk/"
+      >
+        Sponsor a Talk
+      </a>
+    </div>
+  </nav>
+</header>

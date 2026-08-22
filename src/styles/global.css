@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Aller";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../assets/fonts/aller/aller-light/aller-light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Knockout 49 A";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/knockout/knockout-49-a.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Knockout 49 B";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/knockout/knockout-49-b.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Aller";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/aller/aller-regular/aller-regular.woff2")
+    format("woff2");
+}
+
+@theme {
+  --font-sans: "Aller", "Helvetica Neue", Arial, sans-serif;
+  --font-knockout: "Knockout 49 A", "Knockout 49 B", Arial, sans-serif;
+  --font-knockout-alt: "Knockout 49 B", "Knockout 49 A", Arial, sans-serif;
+  --color-twp-orange: #f15b27;
+  --color-twp-pink: #bc2375;
+  --color-twp-red: #dc2157;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes twp-grid-drift {
+  to {
+    background-position:
+      56px 100px,
+      0 0;
+  }
+}
+
+@utility twp-gradient {
+  background-image:
+    url("../assets/img/backgrounds/honeycomb.svg"),
+    linear-gradient(45deg, #f15b27, #bc2375);
+}
+
+@utility twp-grid-animated {
+  animation: twp-grid-drift 2s linear infinite;
+}
+
+.carousel-item {
+  display: none;
+}
+.carousel-item.active {
+  display: block;
+}

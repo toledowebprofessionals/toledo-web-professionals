@@ -1,0 +1,329 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import GetConnected from "../components/GetConnected.astro";
+import AboutContent from "../components/AboutContent.astro";
+import Icon, { type IconName } from "../components/Icon.astro";
+import { Image } from "astro:assets";
+import nickPhoto from "../assets/img/speakers/nick-denardis.jpg";
+import ritaPhoto from "../assets/img/speakers/rita-deraedt.jpg";
+import jaredPhoto from "../assets/img/speakers/jared-rosenberg.jpg";
+import davePhoto from "../assets/img/speakers/dave-rodriguez.jpg";
+import selwynPhoto from "../assets/img/speakers/selwyn-kancharla.jpg";
+import merrillPhoto from "../assets/img/speakers/merrill-rainey.jpg";
+import michaelPhoto from "../assets/img/speakers/michael-hess.jpg";
+import ryanPhoto from "../assets/img/speakers/ryan-lanciaux.jpg";
+import toledoSkyline from "../assets/img/content/toledo-skyline.jpg";
+
+const speakers = [
+  {
+    image: nickPhoto,
+    name: "Nick DeNardis",
+    talk: "Using Agile to Transform Clients into Partners",
+    event: "https://www.meetup.com/Toledo-Web-Professionals/events/175667252/",
+    links: [
+      [
+        "LinkedIn",
+        "https://www.linkedin.com/in/nickdenardis/",
+        "linkedin",
+      ],
+      ["Website", "https://nickdenardis.com/", "link"],
+    ],
+  },
+  {
+    image: ritaPhoto,
+    name: "Rita DeRaedt",
+    talk: "Design at the Googz",
+    event: "https://www.meetup.com/Toledo-Web-Professionals/events/220390332/",
+    links: [
+      [
+        "LinkedIn",
+        "https://www.linkedin.com/in/ritaderaedt/",
+        "linkedin",
+      ],
+      [
+        "Instagram",
+        "https://www.instagram.com/ritaderaedt/",
+        "instagram",
+      ],
+      ["Website", "http://ritaderaedt.com/", "link"],
+    ],
+  },
+  {
+    image: jaredPhoto,
+    name: "Jared Rosenberg",
+    talk: "Collaborative Workflow for Rapid Development",
+    event: "https://www.meetup.com/Toledo-Web-Professionals/events/171969342/",
+    links: [
+      [
+        "LinkedIn",
+        "https://www.linkedin.com/in/jared-rosenberg-9901167b/",
+        "linkedin",
+      ],
+    ],
+  },
+  {
+    image: davePhoto,
+    name: "Dave Rodriguez",
+    talk: "Advanced Front-End Development Workflows with Hanson, Inc.",
+    event: "https://www.meetup.com/Toledo-Web-Professionals/events/170710482/",
+    links: [
+      [
+        "LinkedIn",
+        "https://www.linkedin.com/in/dave-rodriguez-5ab4953/",
+        "linkedin",
+      ],
+      ["Website", "http://ohiodave.com", "link"],
+    ],
+  },
+  {
+    image: selwynPhoto,
+    name: "Selwyn Kancharla",
+    talk: "Life Lessons: What Dashboard Design Taught Me",
+    event: "https://www.meetup.com/Toledo-Web-Professionals/events/220945174/",
+    links: [
+      [
+        "LinkedIn",
+        "https://www.linkedin.com/in/selwynjacob90/",
+        "linkedin",
+      ],
+    ],
+  },
+  {
+    image: merrillPhoto,
+    name: "Merrill Rainey",
+    talk: "Get Out of Your Design Cave",
+    event: "https://www.meetup.com/Toledo-Web-Professionals/events/92856562/",
+    links: [
+      [
+        "LinkedIn",
+        "https://www.linkedin.com/in/merrill-rainey-0a1a8210/",
+        "linkedin",
+      ],
+      [
+        "Instagram",
+        "https://www.instagram.com/littlerainey/",
+        "instagram",
+      ],
+      ["Website", "http://littlerainey.com/", "link"],
+    ],
+  },
+  {
+    image: michaelPhoto,
+    name: "Michael Hess",
+    talk: "Security: Tales from the Field with Michael Hess",
+    event: "https://www.meetup.com/Toledo-Web-Professionals/events/222335600/",
+    links: [
+      [
+        "LinkedIn",
+        "https://www.linkedin.com/in/michaellhess/",
+        "linkedin",
+      ],
+    ],
+  },
+  {
+    image: ryanPhoto,
+    name: "Ryan Lanciaux",
+    talk: "React Mini-Workshop",
+    event: "https://www.meetup.com/Toledo-Web-Professionals/events/228736974/",
+    links: [
+      [
+        "LinkedIn",
+        "https://www.linkedin.com/in/lanciaux/",
+        "linkedin",
+      ],
+      ["GitHub", "https://github.com/ryanlanciaux", "github"],
+      ["Website", "http://ryanlanciaux.com/", "link"],
+    ],
+  },
+];
+
+const socials = [
+  [
+    "Meetup",
+    "https://www.meetup.com/Toledo-Web-Professionals/",
+    "meetup",
+  ],
+  [
+    "Facebook",
+    "https://www.facebook.com/toledowebprofessionals",
+    "facebook",
+  ],
+  [
+    "Instagram",
+    "https://www.instagram.com/toledowebprofessionals/",
+    "instagram",
+  ],
+  [
+    "GitHub",
+    "https://github.com/toledowebprofessionals/",
+    "github",
+  ],
+  ["Email", "mailto:shout@twpmeetup.com", "envelope"],
+] satisfies [string, string, IconName][];
+---
+
+<SiteLayout>
+  <section
+    class="twp-gradient twp-grid-animated flex min-h-screen items-center pt-20 text-white"
+  >
+    <div class="mx-auto w-full max-w-6xl px-5 py-24 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="mb-8 text-4xl font-normal tracking-tight sm:text-5xl">
+          We are Toledo Web Professionals.
+        </h1>
+        <p class="mb-10 max-w-4xl text-2xl font-bold leading-relaxed">
+          We're a grassroots networking organization aimed at creating
+          professional development opportunities, fostering an environment of
+          collaboration, and building a community of technical, design, and
+          business talent in Toledo.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a
+            class="inline-flex min-h-16 items-center justify-center gap-1.5 bg-white px-8 py-2 text-lg font-bold text-twp-orange transition hover:bg-white/90"
+            href="https://www.meetup.com/Toledo-Web-Professionals/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="leading-none">Join & RSVP on</span>
+            <Icon name="meetup" class="text-4xl leading-none" />
+          </a>
+          <a
+            class="inline-flex min-h-16 items-center justify-center border-2 border-white px-8 py-2 text-lg font-bold text-white transition hover:bg-white hover:text-twp-orange"
+            href="/sponsor-a-talk/"
+          >
+            Sponsor a Talk
+          </a>
+        </div>
+        <ul class="mt-6 flex flex-wrap gap-3" aria-label="Social links">
+          {
+            socials.map(([label, href, icon]) => (
+              <li>
+                <a
+                  class="grid size-12 place-items-center text-3xl text-white transition hover:scale-110 hover:text-white/80"
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  aria-label={label}
+                >
+                  <Icon
+                    name={icon}
+                    class={icon === "meetup" ? "text-4xl" : undefined}
+                  />
+                  <span class="sr-only">{label}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <AboutContent id="about" showImage compact />
+
+  <section class="scroll-mt-20 bg-zinc-100 py-20 lg:py-28" id="speakers">
+    <div class="mx-auto max-w-6xl px-5 lg:px-8">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <h2 class="mb-4 text-3xl font-normal text-zinc-700">Past Speakers</h2><p
+        >
+          Here are a few speakers who have shared their experience with the
+          Toledo web community.
+        </p>
+      </div><ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          speakers.map((speaker) => (
+            <li class="flex flex-col overflow-hidden rounded-lg bg-white shadow-md">
+              <>
+                <Image
+                  class="aspect-square w-full object-cover"
+                  src={speaker.image}
+                  alt={speaker.name}
+                  widths={[240, 400, 640]}
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  format="webp"
+                  quality="mid"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="flex flex-1 flex-col p-5">
+                  <>
+                    <h3 class="mb-2 font-semibold text-zinc-800">
+                      {speaker.name}
+                    </h3>
+                    <p class="mb-4 flex-1 text-sm leading-relaxed">
+                      <a
+                        class="text-twp-orange transition hover:text-orange-700 hover:underline"
+                        href={speaker.event}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {speaker.talk}
+                      </a>
+                    </p>
+                    <ul
+                      class="flex flex-wrap gap-3"
+                      aria-label={`${speaker.name} links`}
+                    >
+                      {speaker.links.map(([label, href, icon]) => (
+                        <li>
+                          <a
+                            class="text-lg text-zinc-600 transition hover:text-twp-orange"
+                            href={href}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`${speaker.name} — ${label}`}
+                          >
+                            <Icon name={icon as IconName} />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                </div>
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="scroll-mt-20 py-20 lg:py-28" id="sponsors">
+    <div
+      class="mx-auto grid max-w-6xl items-stretch gap-14 px-5 md:grid-cols-2 lg:px-8"
+    >
+      <figure class="h-full">
+        <Image
+          class="aspect-[4/3] h-full w-full rounded-lg object-cover"
+          src={toledoSkyline}
+          alt="Aerial view of downtown Toledo and the Maumee River"
+          widths={[480, 720, 960]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          format="webp"
+          quality="mid"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div class="self-center">
+        <h2 class="mb-4 text-3xl font-normal text-zinc-700">
+          Sponsor a Talk
+        </h2><p class="mb-7 leading-relaxed">
+          Bring Toledo’s tech community into your space. Host a talk at your
+          office, studio, or workplace and share your team’s expertise,
+          projects, ideas, or lessons learned with local professionals.
+          Sponsoring a talk is a simple way to showcase your work, support local
+          tech talent, and connect your business with the people helping shape
+          Toledo’s future.
+        </p><a
+          class="inline-block border-2 border-twp-orange px-5 py-3 font-semibold text-twp-orange transition hover:bg-twp-orange hover:text-white"
+          href="/sponsor-a-talk/"
+        >
+          Sponsor a Talk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <GetConnected />
+</SiteLayout>

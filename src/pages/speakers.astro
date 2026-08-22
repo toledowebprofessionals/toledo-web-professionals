@@ -1,0 +1,200 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import GetConnected from "../components/GetConnected.astro";
+import { Image } from "astro:assets";
+import Icon from "../components/Icon.astro";
+import nickPhoto from "../assets/img/speakers/nick-denardis.jpg";
+import ritaPhoto from "../assets/img/speakers/rita-deraedt.jpg";
+import selwynPhoto from "../assets/img/speakers/selwyn-kancharla.jpg";
+import merrillPhoto from "../assets/img/speakers/merrill-rainey.jpg";
+import michaelPhoto from "../assets/img/speakers/michael-hess.jpg";
+import ryanPhoto from "../assets/img/speakers/ryan-lanciaux.jpg";
+
+const speakerPhotos = [
+  nickPhoto,
+  ritaPhoto,
+  selwynPhoto,
+  merrillPhoto,
+  michaelPhoto,
+  ryanPhoto,
+];
+
+const cardStyles = [
+  "-rotate-6 translate-y-5",
+  "rotate-3 -translate-y-2",
+  "-rotate-2 translate-y-8",
+  "rotate-6 translate-y-8",
+  "-rotate-3 translate-y-3",
+  "rotate-2 translate-y-10",
+];
+
+const benefits = [
+  "Build your personal brand and share your values or organization with top area talent and employers.",
+  "Showcase your products, services, projects, and ideas to attendees and local companies.",
+  "Connect with industry professionals, collaborators, and employers across the Toledo region.",
+  "Take part in a rich tradition of knowledge sharing by passing on what you know to new learners, colleagues, and local leaders.",
+];
+
+const formats = [
+  [
+    "Talk/Presentation",
+    "Share a focused idea, project, process, or lesson in 30–45 minutes.",
+  ],
+  [
+    "Live Workshop",
+    "Lead an interactive session that gives attendees something practical to try.",
+  ],
+  [
+    "Industry Panel",
+    "Bring several perspectives together for a thoughtful industry conversation.",
+  ],
+];
+---
+
+<SiteLayout
+  title="Speak at Toledo Web Professionals"
+  description="Share your knowledge with Toledo’s tech community through a talk, workshop, or industry panel."
+>
+  <section
+    class="twp-gradient twp-grid-animated overflow-hidden pt-20 text-white"
+  >
+    <div
+      class="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-14 px-5 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:px-8"
+    >
+      <div class="relative z-10 max-w-xl text-left font-bold">
+        <p class="mb-4 text-lg uppercase tracking-[0.15em]">Speak With Us</p>
+        <h1 class="text-5xl leading-[0.9] sm:text-6xl lg:text-7xl">
+          We Want Your Knowledge!
+        </h1>
+        <p class="mt-6 text-xl leading-relaxed">
+          Share your work, experience, and ideas with a diverse community of
+          Toledo-area professionals.
+        </p>
+        <a
+          class="mt-8 inline-block border-2 border-white px-8 py-4 text-white transition hover:bg-white hover:text-twp-orange"
+          href={`mailto:shout@twpmeetup.com?subject=${encodeURIComponent("Propose a talk for Toledo Web Professionals")}`}
+        >
+          Propose a Talk
+        </a>
+      </div>
+
+      <div
+        class="grid grid-cols-3 items-center gap-3 py-8 sm:gap-5 lg:gap-6"
+        aria-label="Past Toledo Web Professionals speakers"
+      >
+        {
+          speakerPhotos.map((photo, index) => (
+            <figure
+              class:list={[
+                "relative rounded-sm bg-white p-2 shadow-2xl",
+                cardStyles[index],
+              ]}
+            >
+              <Image
+                class="aspect-square w-full object-cover"
+                src={photo}
+                alt=""
+                widths={[160, 320, 480]}
+                sizes="(min-width: 1024px) 13vw, 30vw"
+                format="webp"
+                quality="mid"
+                decoding="async"
+              />
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto max-w-5xl px-5 lg:px-8">
+      <div class="grid gap-14 md:grid-cols-[0.8fr_1.2fr]">
+        <h2
+          class="text-3xl font-normal leading-tight text-zinc-700 sm:text-4xl"
+        >
+          Help Toledo learn from what you know.
+        </h2>
+        <div class="space-y-6 leading-relaxed">
+          <h3 class="text-xl font-bold text-twp-pink">
+            We’re driven to build a community in Toledo that celebrates
+            learning, entrepreneurship, and technology.
+          </h3>
+          <p>
+            Because our events are free, they create a powerful bridge for
+            sharing knowledge across industries, disciplines, and neighborhoods.
+          </p>
+          <p>
+            We’d love for you to share your work and expertise with this diverse
+            community through a 30–45 minute talk, a hands-on workshop, or an
+            industry panel. You don’t need to be a professional speaker, just
+            bring a useful idea, an honest story, and make your experience
+            available to others.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-zinc-100 py-20 lg:py-28">
+    <div
+      class="mx-auto grid max-w-5xl gap-12 px-5 md:grid-cols-[0.8fr_1.2fr] lg:px-8"
+    >
+      <div>
+        <h2 class="mb-5 text-3xl font-normal text-zinc-700">Why Speak?</h2>
+        <p class="leading-relaxed">
+          Speaking at Toledo Web Professionals is a meaningful way to get
+          connected, contribute to the community, and make your experience
+          useful to someone else.
+        </p>
+        <a
+          class="mt-7 inline-block border-2 border-twp-orange px-6 py-3 font-bold text-twp-orange transition hover:bg-twp-orange hover:text-white"
+          href={`mailto:shout@twpmeetup.com?subject=${encodeURIComponent("Propose a talk for Toledo Web Professionals")}`}
+        >
+          Propose a Talk
+        </a>
+      </div>
+      <div>
+        <h3 class="mb-6 text-xl font-bold text-twp-pink">
+          By speaking at Toledo Web Professionals, you:
+        </h3>
+        <ul class="space-y-5">
+          {
+            benefits.map((benefit) => (
+              <li class="flex gap-4 leading-relaxed">
+                <Icon name="circle-check" class="mt-1 text-twp-orange" />
+                <span>{benefit}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 lg:py-28">
+    <div
+      class="mx-auto grid max-w-5xl gap-12 px-5 md:grid-cols-[0.8fr_1.2fr] lg:px-8"
+    >
+      <div>
+        <h2 class="mb-5 text-3xl font-normal text-zinc-700">Choose a Format</h2>
+        <p class="leading-relaxed">
+          We’ll work with you to shape an event that serves the topic, the
+          audience, and your comfort level.
+        </p>
+      </div>
+      <div class="space-y-5">
+        {
+          formats.map(([title, copy]) => (
+            <article>
+              <h3 class="mb-2 text-xl font-semibold text-twp-pink">{title}</h3>
+              <p class="leading-relaxed">{copy}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <GetConnected />
+</SiteLayout>

@@ -1,0 +1,21 @@
+---
+import ServiceYears from "./ServiceYears.astro";
+import { Image } from "astro:assets";
+import wordmark from "../assets/img/logos/twp-wordmark-cutout.svg";
+---
+
+<div class="flex w-full flex-col items-center text-center text-white">
+  <p
+    class="font-knockout w-full max-w-6xl text-7xl font-bold uppercase leading-[0.9] tracking-[0.05em] md:text-8xl lg:text-9xl"
+  >
+    <span class="block whitespace-nowrap">
+      <ServiceYears /> Years
+    </span>
+    <span class="block">of Service</span>
+  </p>
+  <Image
+    class="mt-10 w-[32rem] max-w-full"
+    src={wordmark}
+    alt="Toledo Web Professionals"
+  />
+</div>

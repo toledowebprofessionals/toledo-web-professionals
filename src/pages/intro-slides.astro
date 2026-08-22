@@ -1,0 +1,198 @@
+---
+import "../styles/global.css";
+import YearsOfService from "../components/YearsOfService.astro";
+import { Image, getImage } from "astro:assets";
+import favicon from "../assets/img/meta/shortcut/shortcut-196x196.png";
+import fullLogo from "../assets/img/logos/twp-logo-full-w.svg";
+import twpSymbol from "../assets/img/logos/twp-symbol-w.svg";
+import toledoSlogan from "../assets/img/logos/you-will-do-better-in-toledo.svg";
+import toledoBackground from "../assets/img/backgrounds/toledo-background.jpg";
+import toledoFireworks from "../assets/img/backgrounds/toledo-fireworks.jpg";
+import downtownToledo from "../assets/img/backgrounds/downtown-toledo-ohio.jpg";
+
+const [toledoBackgroundWebp, fireworksWebp, downtownWebp] = await Promise.all([
+  getImage({ src: toledoBackground, width: 1920, format: "webp", quality: "mid" }),
+  getImage({ src: toledoFireworks, width: 1920, format: "webp", quality: "mid" }),
+  getImage({ src: downtownToledo, width: 1920, format: "webp", quality: "mid" }),
+]);
+---
+
+<!doctype html>
+<html lang="en" class="overflow-hidden">
+  <head>
+    <meta charset="UTF-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    /><meta
+      name="description"
+      content="Introductory slides for Toledo Web Professionals events."
+    /><link rel="canonical" href="https://twpmeetup.com/intro-slides/" /><link
+      rel="icon"
+      href={favicon.src}
+    /><!-- Google Tag Manager --><script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W5Q54QZL');
+    </script><!-- End Google Tag Manager --><title>Introductory Slides</title>
+  </head>
+  <body class="m-0 overflow-hidden bg-zinc-900 font-sans font-light">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W5Q54QZL"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <main
+      class="introductory-slides relative h-screen w-screen"
+      aria-label="Toledo Web Professionals introductory presentation"
+    >
+      <div class="carousel-item active h-full">
+        <section
+          class="twp-gradient flex h-full items-center justify-center p-12"
+        >
+          <Image
+            class="w-full max-w-xl"
+            src={fullLogo}
+            alt="Toledo Web Professionals"
+          />
+        </section>
+      </div>
+      <div class="carousel-item h-full">
+        <section
+          class="flex h-full flex-col items-center justify-center bg-zinc-100 p-12 text-center"
+        >
+          <h1 class="mb-10 text-4xl font-light text-zinc-700">
+            Our Sponsors
+          </h1><a
+            class="text-4xl font-bold text-[#7c7c6a]"
+            href="https://www.seedcoworking.com/"
+          >
+            Seed Coworking
+          </a>
+        </section>
+      </div>
+      <div class="carousel-item h-full">
+        <section
+          class="relative flex h-full flex-col items-start justify-center overflow-hidden bg-cover bg-center p-[8vw] text-white before:absolute before:inset-0 before:bg-gradient-to-br before:from-twp-orange/80 before:to-twp-pink/80"
+          style={`background-image: url(${toledoBackgroundWebp.src})`}
+        >
+          <div class="relative">
+            <Image
+              class="mb-8 w-32"
+              src={twpSymbol}
+              alt=""
+            /><h1
+              class="max-w-5xl text-5xl font-light leading-tight lg:text-7xl"
+            >
+              Cooking up better web applications with inspiration from the
+              culinary world
+            </h1><p class="mt-8 text-3xl">
+              Ryan Lanciaux <span class="text-xl opacity-80">— Developer</span>
+            </p>
+          </div>
+        </section>
+      </div>
+      <div class="carousel-item h-full">
+        <section
+          class="flex h-full items-center justify-center bg-cover bg-center p-12"
+          style={`background-image: url(${fireworksWebp.src})`}
+        >
+          <div class="w-full max-w-[80vw]">
+            <YearsOfService />
+          </div>
+        </section>
+      </div>
+      <div class="carousel-item h-full">
+        <section
+          class="twp-gradient flex h-full flex-col items-center justify-center p-12 text-white"
+        >
+          <Image
+            class="absolute top-8 w-24"
+            src={twpSymbol}
+            alt=""
+          /><h1 class="mb-10 text-4xl font-light">
+            Upcoming Community Events
+          </h1><ul class="w-full max-w-4xl space-y-7">
+            <li class="border-l-4 border-white/60 pl-6">
+              <time class="text-xl">April 2020</time><h2 class="text-3xl">
+                Toledo Web Professionals Geek Dinner
+              </h2><p>twpmeetup.com</p>
+            </li><li class="border-l-4 border-white/60 pl-6">
+              <time class="text-xl">April 2, 2020</time><h2 class="text-3xl">
+                Identifying open-data problems in Toledo
+              </h2><p>Open Toledo</p>
+            </li><li class="border-l-4 border-white/60 pl-6">
+              <time class="text-xl">March 19, 2020</time><h2 class="text-3xl">
+                Firebase Study Jam
+              </h2><p>GDG Toledo</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+      <div class="carousel-item h-full">
+        <section
+          class="flex h-full flex-col items-center justify-center bg-zinc-100 p-12 text-center"
+        >
+          <h1 class="mb-10 text-5xl font-light text-twp-orange">
+            Get Connected!
+          </h1><p class="mb-6 text-4xl text-zinc-700">twpmeetup.com</p><p
+            class="mb-12 text-2xl text-zinc-500"
+          >
+            Meetup · LinkedIn · Instagram · GitHub
+          </p><p class="text-xl font-semibold text-zinc-700">
+            Event Hashtag: <strong
+              class="mt-3 block bg-gradient-to-r from-twp-orange to-twp-pink px-8 py-3 text-3xl text-white"
+            >
+              #twpmeetup
+            </strong>
+          </p>
+        </section>
+      </div>
+      <div class="carousel-item h-full">
+        <section
+          class="relative flex h-full items-center justify-center overflow-hidden bg-cover bg-center p-12 before:absolute before:inset-0 before:bg-zinc-900/85"
+          style={`background-image: url(${downtownWebp.src})`}
+        >
+          <Image
+            class="relative max-h-[70vh] max-w-[75vw]"
+            src={toledoSlogan}
+            alt="You Will Do Better in Toledo"
+          />
+        </section>
+      </div>
+      <div
+        class="group absolute left-3 top-3 z-20 flex overflow-hidden rounded bg-black/50 text-white"
+      >
+        <button
+          class="introductory-slides-prev p-3 opacity-30 transition hover:bg-black/30 group-hover:opacity-100"
+          aria-label="Previous slide"
+        >
+          ◀
+        </button><button
+          class="introductory-slides-play p-3 opacity-30 transition hover:bg-black/30 group-hover:opacity-100"
+          aria-label="Play slides"
+        >
+          ▶
+        </button><button
+          class="introductory-slides-pause p-3 opacity-30 transition hover:bg-black/30 group-hover:opacity-100"
+          aria-label="Pause slides"
+        >
+          Ⅱ
+        </button><button
+          class="introductory-slides-next p-3 opacity-30 transition hover:bg-black/30 group-hover:opacity-100"
+          aria-label="Next slide"
+        >
+          ▶|
+        </button>
+      </div>
+    </main>
+    <script src="../scripts/site.ts"></script>
+  </body>
+</html>

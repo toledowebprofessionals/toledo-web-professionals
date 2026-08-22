@@ -24,3 +24,6 @@
 *.sublime-workspace
 nbproject
 Thumbs.db
+node_modules
+dist
+.astro

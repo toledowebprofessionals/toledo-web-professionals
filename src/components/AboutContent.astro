@@ -1,0 +1,116 @@
+---
+import { Image, getImage } from "astro:assets";
+import toledoMudHens from "../assets/img/content/toledo-mud-hens.jpg";
+
+const toledoMudHensFull = await getImage({
+  src: toledoMudHens,
+  width: 1200,
+  format: "webp",
+  quality: "high",
+});
+
+interface Props {
+  id?: string;
+  headingLevel?: "h1" | "h2";
+  showImage?: boolean;
+  compact?: boolean;
+}
+
+const {
+  id,
+  headingLevel = "h2",
+  showImage = false,
+  compact = false,
+} = Astro.props;
+const Heading = headingLevel;
+
+const sections = [
+  {
+    title: "Toledo is Our Mission",
+    copy: "Building tech talent in Toledo is what brings us together. Our events connect people across the local tech community, with conversations ranging from UX and digital marketing to programming, startups, and entrepreneurship.",
+  },
+  {
+    title: "Events Powered by Local Businesses",
+    copy: "We partner with businesses across the Toledo region to host tours, talks, workshops, and on-site experiences. These events give members a behind-the-scenes look at the people, companies, and ideas shaping our local tech community.",
+  },
+  {
+    title: "Did We Mention It’s Free?",
+    copy: "We’re volunteer-run, with no membership fees and no cost to attend our events. Support from local sponsors makes it possible to keep things free while providing great spaces, speakers, experiences, and opportunities for the community.",
+  },
+];
+---
+
+<section class="scroll-mt-20 bg-white py-20 text-zinc-600 lg:py-28" id={id}>
+  <div
+    class:list={[
+      "mx-auto max-w-6xl px-5 lg:px-8",
+      showImage && "grid items-stretch gap-14 md:grid-cols-2",
+    ]}
+  >
+    <div class:list={[showImage && "self-center"]}>
+      {
+        compact ? (
+          <>
+            <Heading class="mb-5 text-3xl font-normal leading-tight text-zinc-700 sm:text-4xl">
+              Toledo is Our Mission
+            </Heading>
+            <p class="mb-7 leading-relaxed">
+              We’re a volunteer-run community bringing Toledo’s tech scene
+              together through free talks, tours, workshops, and events covering
+              everything from UX and digital marketing to programming and
+              entrepreneurship. With support from local businesses and sponsors,
+              we’re able to create meaningful experiences, connect people across
+              the region, and help strengthen Toledo’s tech community.
+            </p>
+            <a
+              class="inline-block border-2 border-twp-orange px-5 py-3 font-semibold text-twp-orange transition hover:bg-twp-orange hover:text-white"
+              href="/about/"
+            >
+              Learn More About Us
+            </a>
+          </>
+        ) : (
+          <>
+            <Heading class="mb-10 max-w-3xl text-3xl font-normal leading-tight text-zinc-700 sm:text-4xl">
+              We bring learners, professionals, and businesses together.
+            </Heading>
+
+            <div class:list={["grid gap-10", !showImage && "md:grid-cols-3"]}>
+              {sections.map(({ title, copy }) => (
+                <section>
+                  <h3 class="mb-3 text-xl font-semibold text-twp-pink">
+                    {title}
+                  </h3>
+                  <p class="leading-relaxed">{copy}</p>
+                </section>
+              ))}
+            </div>
+          </>
+        )
+      }
+    </div>
+
+    {
+      showImage && (
+        <figure class="h-full">
+          <a
+            class="block h-full"
+            href={toledoMudHensFull.src}
+          >
+            <Image
+              class="aspect-[4/3] h-full w-full rounded-lg object-cover object-bottom"
+              src={toledoMudHens}
+              alt="Aerial view of Fifth Third Field and downtown Toledo at sunset"
+              widths={[480, 720, 960]}
+              sizes="(min-width: 768px) 50vw, 100vw"
+              format="webp"
+              quality="mid"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </figure>
+      )
+    }
+  </div>
+</section>
